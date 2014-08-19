@@ -12,4 +12,9 @@ class Product < ActiveRecord::Base
   	:large    => '-set colorspace sRGB -strip',
   	:retina   => '-set colorspace sRGB -strip -sharpen 0x0.5'
 	}
+
+  def self.search(search)
+      where('name LIKE ?', "%#{search}%")
+  end
+
 end
