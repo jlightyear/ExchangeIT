@@ -83,13 +83,13 @@
         <div class="row">
             <div class="col-md-7">
                 <a href="#">
-                		<%= image_tag @product.image.url, :class => "img-responsive", :title => @product.name %>
+                		<%= image_tag @product.image.url(:large), :title => @product.name %>
                     <!--<img class="img-responsive" src="http://placehold.it/700x300" alt="">-->
                 </a>
             </div>
             <div class="col-md-5">
                 <h3><%= @product.name %></h3>
-                <h4>Subheading</h4>
+                <h4><%= @product.categoria %></h4>
                 <p><%= @product.description %></p>
                 <a class="btn btn-primary" href="#">Send email <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
