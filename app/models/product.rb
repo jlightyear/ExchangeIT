@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+  belongs_to :user, :foreign_key => 'user_id'
 	has_attached_file :image,
 	:styles => {
   	:thumb    => ['160>',  :jpg, :quality => 50],

@@ -77,9 +77,4 @@ test:
 #
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
-#
-production:
-  <<: *default
-  database: exchangeit_production
-  username: nene
-  password: <%= ENV['EXCHANGEIT_DATABASE_PASSWORD'] %>
+
