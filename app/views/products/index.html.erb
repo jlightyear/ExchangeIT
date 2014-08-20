@@ -1,56 +1,55 @@
-    <!-- Page Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="list-group">
-                    <%= link_to 'List of products', products_path, :class => "list-group-item" %>
-                    <%= link_to 'New product', new_product_path, :class => "list-group-item" %>
-                </div>
-                <%= form_tag({:controller => "products", :action => "index"}, :method => :get) do %>
-                <%= text_field_tag "searchbox", params[:searchbox] %>
-                <%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
-                <% end %>
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group">
+                <%= link_to 'List of products', products_path, :class => "list-group-item" %>
+                <%= link_to 'New product', new_product_path, :class => "list-group-item" %>
             </div>
+            <%= form_tag({:controller => "products", :action => "index"}, :method => :get) do %>
+            <%= text_field_tag "searchbox", params[:searchbox] %>
+            <%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
+            <% end %>
+        </div>
 
-            <div class="col-md-9">
-                <div class="row">
-                  <% @products.each do |product| %>
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <%= image_tag product.image.url(:preview), :title => product.name %>
-                            <div class="caption">
-                                <h4><%= product.name %></h4>
-                                <p><%= product.description %></p>
-                            </div>
-                            <div class="ratings">
-                                <p class="pull-right"><%= link_to 'Show', product %></p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                </p>
-                            </div>
+        <div class="col-md-9">
+            <div class="row">
+              <% @products.each do |product| %>
+                <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="thumbnail">
+                        <%= image_tag product.image.url(:preview), :title => product.name %>
+                        <div class="caption">
+                            <h4><%= product.name %></h4>
+                            <p><%= product.description %></p>
+                        </div>
+                        <div class="ratings">
+                            <p class="pull-right"><%= link_to 'Show', product %></p>
+                            <p>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                            </p>
                         </div>
                     </div>
-                  <% end %>
                 </div>
+              <% end %>
             </div>
         </div>
     </div>
-    <!-- /.container -->
-    <div class="container">
-        <hr>
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; ExchangeIt 2014</p>
-                </div>
+</div>
+<!-- /.container -->
+<div class="container">
+    <hr>
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Copyright &copy; ExchangeIt 2014</p>
             </div>
-        </footer>
-
-    </div>
+        </div>
+    </footer>
+</div>
 
 

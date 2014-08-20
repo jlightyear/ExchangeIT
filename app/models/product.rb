@@ -15,7 +15,9 @@ class Product < ActiveRecord::Base
 	}
 
   def self.search(search)
-      where('name LIKE ?', "%#{search}%")
+      result = where('name ILIKE ?', "%#{search}%")
+      result += where('description ILIKE ?', "%#{search}%")
+      result.uniq
   end
 
 end
