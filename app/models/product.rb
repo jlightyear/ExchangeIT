@@ -4,8 +4,8 @@ class Product < ActiveRecord::Base
 	:styles => {
   	:thumb    => ['160>',  :jpg, :quality => 50],
   	:preview  => ['x150',  :jpg, :quality => 50],
-  	:large    => ['480>',      :jpg, :quality => 60],
-  	:retina   => ['1200>',     :jpg, :quality => 30]
+  	:large    => ['480>',  :jpg, :quality => 60],
+  	:retina   => ['1200>', :jpg, :quality => 30]
 	},
 	:convert_options => {
   	:thumb    => '-set colorspace sRGB -strip',
@@ -19,5 +19,4 @@ class Product < ActiveRecord::Base
       result += where('description ILIKE ?', "%#{search}%")
       result.uniq
   end
-
 end

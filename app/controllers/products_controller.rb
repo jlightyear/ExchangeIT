@@ -5,7 +5,10 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.search(params[:searchbox])
+    @products = Product.all
+    if(params.has_key?(:searchbox))
+      @products = Product.search(params[:searchbox])
+    end
   end
 
   # GET /products/1
@@ -63,6 +66,11 @@ class ProductsController < ApplicationController
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def user_products
+    @products = current_user.products
+    render :index
   end
 
   private
