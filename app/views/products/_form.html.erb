@@ -18,7 +18,31 @@
   <%= f.text_area :description, :class => "form-control", :rows => "3" %>
   <br />
   <%= f.label :category %>
-  <%= f.select :categoria, options_for_select([['Selecciona una categoría','Otras categorías'],'Arte y Antigüedades','Bebés','Belleza y Salud','Cámaras y Fotografía','Casa, Jardín y Bricolaje','Cine, DVD y Películas','Coches, Motos y Recambios','Coleccionismo','Consolas y Videojuegos','Deportes','Electrodomésticos','Equipamiento y Maquinaria','Imagen y sonido','Informática y tablets','Instrumentos Musicales','Juguetes','Libros, Revistas y Comics','Móviles y telefonía','Música, CD y Vinilos','Relojes y Joyas','Ropa, Calzado y Complementos','Otras categorías']), :class => "form-control" %>
+  <select id="product_categoria" name="product[categoria]" class="form-control">
+    <option value="Otras categorías">Selecciona una categoría</option>
+    <option value="Arte y Antigüedades">Arte y Antigüedades</option>
+    <option value="Bebés">Bebés</option>
+    <option value="Belleza y Salud">Belleza y Salud</option>
+    <option value="Cámaras y Fotografía">Cámaras y Fotografía</option>
+    <option value="Casa, Jardín y Bricolaje">Casa, Jardín y Bricolaje</option>
+    <option value="Cine, DVD y Películas">Cine, DVD y Películas</option>
+    <option value="Coches, Motos y Recambios">Coches, Motos y Recambios</option>
+    <option value="Coleccionismo">Coleccionismo</option>
+    <option value="Consolas y Videojuegos">Consolas y Videojuegos</option>
+    <option value="Deportes">Deportes</option>
+    <option value="Electrodomésticos">Electrodomésticos</option>
+    <option value="Equipamiento y Maquinaria">Equipamiento y Maquinaria</option>
+    <option value="Imagen y sonido">Imagen y sonido</option>
+    <option value="Informática y tablets">Informática y tablets</option>
+    <option value="Instrumentos Musicales">Instrumentos Musicales</option>
+    <option value="Juguetes">Juguetes</option>
+    <option value="Libros, Revistas y Comics">Libros, Revistas y Comics</option>
+    <option value="Móviles y telefonía">Móviles y telefonía</option>
+    <option value="Música, CD y Vinilos">Música, CD y Vinilos</option>
+    <option value="Relojes y Joyas">Relojes y Joyas</option>
+    <option value="Ropa, Calzado y Complementos">Ropa, Calzado y Complementos</option>
+    <option value="Otras categorías">Otras categorías</option>
+    </select>
   <br />
   <%= f.label :image %>
   <%= f.file_field :image, :title => "Search for a file to add" %>
