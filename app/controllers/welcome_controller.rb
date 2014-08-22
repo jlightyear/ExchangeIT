@@ -1,6 +1,10 @@
 class WelcomeController < ApplicationController
 
 	def index
-		render "index", :layout => false
+    @products = Product.all
 	end
+
+  def show
+    render "index", :layout => false
+  end
 end

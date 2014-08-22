@@ -1,119 +1,80 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>Exchangeit</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <span class="navbar-brand">ExchangeIt</span>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#">Services</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right ">
-          <% if user_signed_in? %>
-            <li><p class="navbar-text">Signed in as <%= link_to current_user.email, edit_user_registration_path %></p></li>
-            <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
-          <% else %>
-            <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
-            <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
-          <% end %>
-          </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+<!-- Page Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <p class="lead">Shop Name</p>
+      <div class="list-group">
+        <%= link_to 'List of products', products_path, :class => "list-group-item" %>
+        <%= link_to 'New product', new_product_path, :class => "list-group-item" %>
+        <%= link_to 'My products', user_products_path, :class => "list-group-item" %>
       </div>
-      <!-- /.container -->
-    </nav>
-  <% if notice %>
-    <div class="container">
-      <p class="alert alert-warning" role="alert"><%= notice %></p>
+      <div>
+        <%= form_tag({:controller => "products", :action => "index"}, :method => :get) do %>
+          <%= text_field_tag "searchbox", params[:searchbox] %>
+          <%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-  <% if alert %>
-    <div class="container">
-      <p class="alert alert-danger" role="alert"><%= alert %></p>
-    </div>
-  <% end %>
-<div class="container">
-	<div class="col-md-9">
-		<div class="jumbotron">
-		  <h1>Welcome to ExchangeIt</h1>
-			<p><%= link_to 'List of products', products_path, :class => "btn btn-primary btn-lg", :role => "button" %></p>
-		</div>
-	</div>
-</div>
-<div class="container">
-    <div class="row smpl-step" style="border-bottom: 0; min-width: 500px;">
-        <div class="col-xs-3 smpl-step-step complete">
-            <div class="text-center smpl-step-num">Step 1</div>
-            <div class="progress">
-                <div class="progress-bar"></div>
+    <div class="col-md-9">
+      <div class="row">
+
+      <% @products.each do |product| %>
+        <div class="col-sm-4 col-lg-4 col-md-4">
+          <div class="thumbnail">
+            <img src="http://placehold.it/320x150" alt="">
+            <div class="caption">
+              <h4><%= link_to product.name, product %></h4>
+              <p><%= product.description %></p>
             </div>
-            <a class="smpl-step-icon"><i class="fa fa-user" style="font-size: 60px; padding-left: 12px; padding-top: 3px; color: black;"></i></a>
-            <div class="smpl-step-info text-center">Find something in your place<br />that you want to exchange,<br />and make it a picture.</div>
+            <div class="ratings">
+              <p class="pull-right">15 reviews</p>
+              <p>
+                  <span class="glyphicon glyphicon-star"></span>
+                  <span class="glyphicon glyphicon-star"></span>
+                  <span class="glyphicon glyphicon-star"></span>
+                  <span class="glyphicon glyphicon-star"></span>
+                  <span class="glyphicon glyphicon-star"></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <h4><a href="#">Like this template?</a>
+            </h4>
+            <p>If you like this template, then check out <a target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this tutorial</a> on how to build a working review system for your online store!</p>
+            <a class="btn btn-primary" target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">View Tutorial</a>
         </div>
 
-        <div class="col-xs-3 smpl-step-step complete">
-            <div class="text-center smpl-step-num">Step 2</div>
-            <div class="progress">
-                <div class="progress-bar"></div>
-            </div>
-            <a class="smpl-step-icon"><i class="fa fa-user" style="font-size: 60px; padding-left: 12px; padding-top: 3px; color: black;"></i></a>
-            <div class="smpl-step-info text-center">Sign in with your register user.</div>
-        </div>
-        <div class="col-xs-3 smpl-step-step complete">
-            <div class="text-center smpl-step-num">Step 3</div>
-            <div class="progress">
-                <div class="progress-bar"></div>
-            </div>
-            <a class="smpl-step-icon"><i class="fa fa-repeat" style="font-size: 60px; padding-left: 7px; padding-top: 7px; color: black;"></i></a>
-            <div class="smpl-step-info text-center">Upload a new product with<br />the picture and a description.</div>
-        </div>
-        <div class="col-xs-3 smpl-step-step active">
-            <div class="text-center smpl-step-num">Step 4</div>
-            <div class="progress">
-                <div class="progress-bar"></div>
-            </div>
-            <a class="smpl-step-icon"><i class="fa fa-repeat" style="font-size: 60px; padding-left: 7px; padding-top: 7px; color: black;"></i></a>
-            <div class="smpl-step-info text-center">Search in the list of products<br />something that you want and<br />make a deal with the user.</div>
-        </div>
+      </div>
     </div>
+  </div>
 </div>
+<!-- /.container -->
+
+<div class="container">
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Copyright &copy; Your Website 2014</p>
+            </div>
+        </div>
+    </footer>
+
+</div>
+<!-- /.container -->
+
+<!-- jQuery Version 1.11.0 -->
+<script src="js/jquery-1.11.0.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
 
 </body>
+
 </html>
