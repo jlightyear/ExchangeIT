@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello <%= @product.user_id.user %></h1>
+    <p>
+      The user <%= current_user.user %> likes one of your products (<%= @product.name %>),<br />
+      you can contact with: <%= current_user.email %>.<br>
+    </p>
+    <p>
+      If you want to take a look in the user's products, login to the site,<br />
+      and search with the user's email.
+    </p>
+    <p>Thanks for visit us and have a great day!</p>
+  </body>
+</html>

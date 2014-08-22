@@ -6,7 +6,7 @@
             <div class="list-group">
                 <%= link_to 'List of products', products_path, :class => "list-group-item" %>
                 <%= link_to 'New product', new_product_path, :class => "list-group-item" %>
-                <%= link_to 'My products', user_products_path, :class => "list-group-item" %>
+                <%= link_to 'My products', my_products_path, :class => "list-group-item" %>
             </div>
             <%= form_tag({:controller => "products", :action => "index"}, :method => :get) do %>
             <%= text_field_tag "searchbox", params[:searchbox] %>
@@ -19,13 +19,19 @@
               <% @products.each do |product| %>
                 <div class="col-sm-4 col-lg-4 col-md-4">
                     <div class="thumbnail">
-                        <%= image_tag product.image.url(:preview), :title => product.name %>
+                        <%= link_to (image_tag product.image.url(:preview)), product, :title => product.name %>
                         <div class="caption">
-                            <h4><%= product.name %></h4>
+                            <h4><%= link_to product.name, product %></h4>
                             <p><%= product.description %></p>
                         </div>
                         <div class="ratings">
-                            <p class="pull-right"><%= link_to 'Show', product %></p>
+                            <p class="pull-right">
+                            <% if user_signed_in? %>
+                              <% if current_user.id == product.user_id %>
+                                  <%= link_to 'Edit', edit_product_path(product) %> |
+                              <% end %>
+                            <% end %>
+                            <%= link_to 'Show', product %></p>
                             <p>
                                 <span class="glyphicon glyphicon-star"></span>
                                 <span class="glyphicon glyphicon-star"></span>

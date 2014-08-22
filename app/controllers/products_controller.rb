@@ -68,7 +68,13 @@ class ProductsController < ApplicationController
     end
   end
 
-  def user_products
+  def user_products(user)
+    user = User.where(email: params[:email])
+    @products = user.products
+    render :index
+  end
+
+  def my_products
     @products = current_user.products
     render :index
   end
