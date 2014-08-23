@@ -14,13 +14,6 @@
               <%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
               <% end %>
             </div>
-            <br />
-            <div>
-              <%= form_tag({:controller => "products", :action => "index"}, :method => :get) do %>
-              <%= text_field_tag "searchemail", params[:searchemail] %>
-              <%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
-              <% end %>
-            </div>
         </div>
 
         <div class="col-md-9">

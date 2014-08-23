@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  belongs_to :user, :foreign_key => 'user_id'
+  belongs_to :user
 	has_attached_file :image,
 	:styles => {
   	:thumb    => ['160>',  :jpg, :quality => 50],
@@ -17,12 +17,11 @@ class Product < ActiveRecord::Base
   def self.search(search)
       result = where('name ILIKE ?', "%#{search}%")
       result += where('description ILIKE ?', "%#{search}%")
+      user = User.where('email ILIKE ?', "%#{search}%")
+      if user.size > 0
+        result = user[0].products
+      end
       result.uniq
-  end
-
-  def self.search_product_by_email(search)
-    user = User.where('email ILIKE ?', "%#{search}%")
-    result = user.products
   end
 
 end
