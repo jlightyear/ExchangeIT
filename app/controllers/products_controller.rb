@@ -9,6 +9,10 @@ class ProductsController < ApplicationController
     if(params.has_key?(:searchbox))
       @products = Product.search(params[:searchbox])
     end
+
+    if(params.has_key?(:searchemail))
+      @products = Product.search_product_by_email(params[:searchemail])
+    end
   end
 
   # GET /products/1
@@ -31,7 +35,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
+    @product = current_user.products.new(product_params)
 
     respond_to do |format|
       if @product.save

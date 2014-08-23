@@ -8,10 +8,19 @@
                 <%= link_to 'New product', new_product_path, :class => "list-group-item" %>
                 <%= link_to 'My products', my_products_path, :class => "list-group-item" %>
             </div>
-            <%= form_tag({:controller => "products", :action => "index"}, :method => :get) do %>
-            <%= text_field_tag "searchbox", params[:searchbox] %>
-            <%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
-            <% end %>
+            <div>
+              <%= form_tag({:controller => "products", :action => "index"}, :method => :get) do %>
+              <%= text_field_tag "searchbox", params[:searchbox] %>
+              <%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
+              <% end %>
+            </div>
+            <br />
+            <div>
+              <%= form_tag({:controller => "products", :action => "index"}, :method => :get) do %>
+              <%= text_field_tag "searchemail", params[:searchemail] %>
+              <%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
+              <% end %>
+            </div>
         </div>
 
         <div class="col-md-9">

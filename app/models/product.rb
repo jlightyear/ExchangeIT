@@ -19,4 +19,10 @@ class Product < ActiveRecord::Base
       result += where('description ILIKE ?', "%#{search}%")
       result.uniq
   end
+
+  def self.search_product_by_email(search)
+    user = User.where('email ILIKE ?', "%#{search}%")
+    result = user.products
+  end
+
 end
