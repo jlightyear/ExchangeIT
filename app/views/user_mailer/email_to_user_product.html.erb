@@ -4,10 +4,10 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Hello <%= @product.user_id.user %></h1>
+    <h1>Hello <%= @product_user.user %></h1>
     <p>
-      The user <%= current_user.user %> likes one of your products (<%= @product.name %>),<br />
-      you can contact with: <%= current_user.email %>.<br>
+      The user <%= @user.user %> likes one of your products (<%= @product.name %>),<br />
+      you can contact with: <%= @user.email %>.<br>
     </p>
     <p>
       If you want to take a look in the user's products, login to the site,<br />

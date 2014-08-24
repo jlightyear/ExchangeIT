@@ -1,8 +1,8 @@
-Hello <%= @product.user_id.user %>
+Hello <%= @product_user.user %>
 ===================================================================================
 
-The user <%= current_user.user %> likes one of your products (<%= @product.name %>),
-you can contact with: <%= current_user.email %>.
+The user <%= @user.user %> likes one of your products (<%= @product.name %>),
+you can contact with: <%= @user.email %>.
 
 If you want to take a look in the user's products, login to the site,
 and search with the user's email.
