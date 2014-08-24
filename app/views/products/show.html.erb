@@ -20,7 +20,24 @@
                 <h3><%= @product.name %></h3>
                 <h4><%= @product.categoria %></h4>
                 <p><%= @product.description %></p>
-                <a class="btn btn-primary" href="#">Send email <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="btn btn-primary" href="#">Send email <span class="glyphicon glyphicon-chevron-right"></span></a><br /><br />
+                <h4>Comments</h4>
+                <% @product.comments.each do |comment| %>
+                  <p>
+                      <%= comment.user.user %>:<br />
+                      <%= comment.content %>
+                      <hr>
+                  </p>
+                <% end %>
+                <% if user_signed_in? %>
+                    <h4>Add a comment:</h4>
+                    <%= form_for([@product, @product.comments.build]) do |f| %>
+                        <%= f.hidden_field :user_id, value: current_user.id %>
+                        <%= f.hidden_field :product_id, value: @product.id %>
+                        <%= f.text_area :content, :class => "form-control", :rows => "3" %><br />
+                        <%= f.submit :class => "btn btn-primary" %>
+                    <% end %>
+                <% end %>
             </div>
         </div>
         <!-- /.row -->
