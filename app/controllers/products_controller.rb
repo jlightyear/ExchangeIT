@@ -9,10 +9,6 @@ class ProductsController < ApplicationController
     if(params.has_key?(:searchbox))
       @products = Product.search(params[:searchbox])
     end
-
-    if(params.has_key?(:searchemail))
-      @products = Product.search_product_by_email(params[:searchemail])
-    end
   end
 
   # GET /products/1
@@ -73,10 +69,10 @@ class ProductsController < ApplicationController
     end
   end
 
-  def user_products(user)
-    user = User.where(email: params[:email])
-    @products = user.products
-    render :index
+  def user_email
+    product = Product.find(params[:product_id])
+    UserMailer.email_to_user_product(product, current_user).deliver
+    redirect_to product, notice: 'The email was successfully send.'
   end
 
   def my_products

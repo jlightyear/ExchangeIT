@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root 'products#index'
 
   get 'my_products' => 'products#my_products', :as => 'my_products'
+  get 'user_email/:product_id' => 'products#user_email', :as => 'user_email'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

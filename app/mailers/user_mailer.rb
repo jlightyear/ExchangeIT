@@ -1,9 +1,9 @@
 class UserMailer < ActionMailer::Base
   default from: "joseluis.estrach@gmail.com"
 
-  def email_to_user_product(product, user)
-    @product_user = product.user_id
-    @user = user
+  def email_to_user_product(product, current_user)
+    @product_user = product.user
+    @user = current_user
     @product = product
     mail(to: @product_user.email, subject: 'Make a deal in ExcahngeIt')
   end
@@ -11,6 +11,6 @@ class UserMailer < ActionMailer::Base
   def email_to_new_product(product, user)
     @user = user
     @product = product
-    mail(to: user.email, subject: 'You have a new product in ExcahngeIt')
+    mail(to: product.user.email, subject: 'You have a new product in ExcahngeIt')
   end
 end
