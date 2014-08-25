@@ -31,6 +31,7 @@ gem 'paperclip', '~> 3.0'
 gem 'devise'
 gem 'sendgrid', '~> 1.2.0'
 gem 'aws-sdk'
+gem 'kaminari'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

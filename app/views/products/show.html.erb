@@ -21,6 +21,7 @@
                 <h4><%= @product.categoria %></h4>
                 <p><%= @product.description %></p>
                 <%= link_to 'I want it', user_email_path(@product), :class => "btn btn-primary" %>
+                We send your email to product owner.
                 <br /><br />
                 <h4>Comments</h4>
                 <% @product.comments.each do |comment| %>
