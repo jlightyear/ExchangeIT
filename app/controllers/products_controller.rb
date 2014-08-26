@@ -7,8 +7,7 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all.page(params[:page]).per(6)
     if(params.has_key?(:searchbox))
-      @products = Product.search(params[:searchbox])
-      @products = Kaminari.paginate_array(@products).page(params[:page]).per(6)
+      @products = Kaminari.paginate_array(Product.search(params[:searchbox])).page(params[:page]).per(6)
     end
   end
 
@@ -77,8 +76,7 @@ class ProductsController < ApplicationController
   end
 
   def my_products
-    @products = current_user.products
-    @products = Kaminari.paginate_array(@products).page(params[:page]).per(10)
+    @products = Kaminari.paginate_array(current_user.products).page(params[:page]).per(6)
     render :index
   end
 
