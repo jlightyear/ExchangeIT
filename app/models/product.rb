@@ -3,8 +3,8 @@ class Product < ActiveRecord::Base
   has_many          :comments, dependent: :destroy
   has_attached_file :image,
   :styles => {
-    :thumb    => ['160>',  :jpg, :quality => 50],
-    :preview  => ['320x150',  :jpg, :quality => 50],
+    :thumb    => ['75x75',  :jpg, :quality => 50],
+    :preview  => ['320x140',  :jpg, :quality => 50],
     :standard    => ['480>',  :jpg, :quality => 60],
     :retina   => ['1200>', :jpg, :quality => 30]
   },

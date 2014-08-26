@@ -46,7 +46,6 @@
   <br />
   <%= f.label :image %>
   <%= image_tag(@product.image_url(:thumb)) if @product.image? %>
-  <%= f.hidden_field(:image_cache) %>
   <%= f.file_field :image, :title => "Search for a file to add" %>
   <br />
   <%= f.submit :class => "btn btn-primary" %>
