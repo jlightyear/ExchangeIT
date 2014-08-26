@@ -32,6 +32,9 @@ gem 'devise'
 gem 'sendgrid', '~> 1.2.0'
 gem 'aws-sdk'
 gem 'kaminari'
+# gem 'rmagick'
+# gem 'carrierwave'
+# gem 'cloudinary'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
