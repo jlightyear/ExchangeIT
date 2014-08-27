@@ -903,7 +903,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: #fff;
+  background-color: rgba(232,240,239,0.52);
 }
 input,
 button,
@@ -4516,16 +4516,16 @@ a.label:focus {
 .badge {
   display: inline-block;
   min-width: 10px;
-  padding: 3px 7px;
-  font-size: 12px;
+  padding: 4px 7px;
+  font-size: 10px;
   font-weight: bold;
   line-height: 1;
   color: #fff;
   text-align: center;
   white-space: nowrap;
-  vertical-align: baseline;
-  background-color: #777;
-  border-radius: 10px;
+  vertical-align: middle;
+  background-color: #fcc;
+  border-radius: 5px;
 }
 .badge:empty {
   display: none;

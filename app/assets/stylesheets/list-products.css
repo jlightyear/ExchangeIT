@@ -45,6 +45,15 @@ body {
     color: #333;
 }
 
+.message_part, .comments_text{
+    color: #666666;
+    font-size: 12px;
+}
+
+.message_alert{
+    color: #d17581;
+}
+
 footer {
     margin: 10px 0;
     text-align: right;

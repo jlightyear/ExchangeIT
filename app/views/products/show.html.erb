@@ -12,33 +12,48 @@
             <div class="col-md-9">
         <div class="row">
             <div class="col-md-7">
-                <a href="#">
-                	<%= image_tag @product.image.url(:standard), :title => @product.name %>
-                </a>
+                <%= image_tag @product.image.url(:standard), :title => @product.name %>
             </div>
             <div class="col-md-5">
                 <h3><%= @product.name %></h3>
                 <h4><%= @product.categoria %></h4>
                 <p><%= @product.description %></p>
-                <%= link_to 'I want it', user_email_path(@product), :class => "btn btn-primary" %>
-                We send your email to product owner.
-                <br /><br />
+                <% if user_signed_in? && current_user != @product.user %>
+                    <input type="button" value="I want it" class="btn btn-primary btn-xs" id="iwant" />
+                    <br /><br />
+                    <div id="contact" style="display:none">
+                        <p class="message_part">
+                        <span class="message_alert">We send this header in the email</span><br />
+                        The user <%= current_user.user %> likes one of your products<br />
+                        (<%= @product.name %>).<br />
+                        You can contact with: <%= current_user.email %>.<br /><br />
+                        <span class="message_alert">Write your message body here:</span><br />
+                        </p>
+                        <%= form_tag(user_email_path(@product)) do %>
+                            <%= text_area_tag :message, nil, {:class => "form-control", :rows => "2"} %><br />
+                            <%= submit_tag nil, {:class => "btn btn-primary btn-sm"} %>
+                        <% end %>
+                    </div>
+                <% end %>
+                <br />
                 <h4>Comments</h4>
                 <% @product.comments.each do |comment| %>
-                  <p>
+                  <div class="well well-sm comments_text">
                       <%= comment.user.user %>:<br />
                       <%= comment.content %>
-                      <hr>
-                  </p>
+                  </div>
                 <% end %>
                 <% if user_signed_in? %>
-                    <h4>Add a comment:</h4>
-                    <%= form_for([@product, @product.comments.build]) do |f| %>
-                        <%= f.hidden_field :user_id, value: current_user.id %>
-                        <%= f.hidden_field :product_id, value: @product.id %>
-                        <%= f.text_area :content, :class => "form-control", :rows => "3" %><br />
-                        <%= f.submit :class => "btn btn-primary" %>
-                    <% end %>
+                    <input type="button" value="Add a comment" class="btn btn-primary btn-xs" id="addcomment" />
+                    <br /> <br />
+                    <div id="comment" style="display:none">
+                        <%= form_for([@product, @product.comments.build]) do |f| %>
+                            <%= f.hidden_field :user_id, value: current_user.id %>
+                            <%= f.hidden_field :product_id, value: @product.id %>
+                            <%= f.text_area :content, :class => "form-control", :rows => "2" %><br />
+                            <%= f.submit :class => "btn btn-primary btn-sm" %>
+                        <% end %>
+                    </div>
                 <% end %>
             </div>
         </div>

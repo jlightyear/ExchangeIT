@@ -71,7 +71,7 @@ class ProductsController < ApplicationController
 
   def user_email
     product = Product.find(params[:product_id])
-    UserMailer.email_to_user_product(product, current_user).deliver
+    UserMailer.email_to_user_product(product, current_user, params[:message]).deliver
     redirect_to product, notice: 'The email was successfully send.'
   end
 

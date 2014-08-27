@@ -11,7 +11,7 @@
             <div>
               <%= form_tag({:controller => "products", :action => "index"}, :method => :get) do %>
               <%= text_field_tag "searchbox", params[:searchbox] %>
-              <%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
+              <%= submit_tag "Search", :name => nil, :class => "btn btn-primary btn-sm" %>
               <% end %>
             </div>
         </div>
@@ -36,7 +36,7 @@
                             <% end %>
                             <%= link_to 'Show', product %></p>
                             <p>
-                                Comments: <%= product.comments.size %>
+                                Comments <span class="badge"><%= product.comments.size %></span>
 
                             </p>
                         </div>
