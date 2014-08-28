@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'products#index'
+  root 'welcome#index'
 
   get 'my_products' => 'products#my_products', :as => 'my_products'
   post 'user_email/:product_id' => 'products#user_email', :as => 'user_email'

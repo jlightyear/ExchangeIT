@@ -1,80 +1,25 @@
-<!-- Page Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
-      <p class="lead">Shop Name</p>
-      <div class="list-group">
-        <%= link_to 'List of products', products_path, :class => "list-group-item" %>
-        <%= link_to 'New product', new_product_path, :class => "list-group-item" %>
-        <%= link_to 'My products', user_products_path, :class => "list-group-item" %>
-      </div>
-      <div>
-        <%= form_tag({:controller => "products", :action => "index"}, :method => :get) do %>
-          <%= text_field_tag "searchbox", params[:searchbox] %>
-          <%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
-        <% end %>
-      </div>
+    <!-- Page Content -->
+    <div class="container">
+        <!-- Featurette -->
+        <div class="featurette" id="about">
+        <br />
+            <%= link_to (image_tag "/images/trastos.jpg", :class => "featurette-image img-circle img-responsive pull-right" ), products_path %>
+            <h2 class="featurette-heading">If you don't want it,<br />
+                <span class="text-muted">just ExchangeIt</span>
+            </h2>
+            <p class="lead">Everyone has something at home that don't want, things you no longer use it, take it to a second-hand store is an option, but do you have the ticket or invoice?<br />
+            Do you think that they pay you enough?<br /><br />
+            ExchangeIt is a portal where people exchange goods with others, upload the photos of the products you want and add a description, contact with another user who has a product that interests you and make a deal in ExchangeIt.</p>
+            <%= link_to 'List of products', products_path, :class => "btn btn-primary" %>
+        </div>
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+              <br /><br />
+                <div class="col-lg-12">
+                    <p>Copyright &copy; ExchangeIt 2014</p>
+                </div>
+            </div>
+        </footer>
+
     </div>
-    <div class="col-md-9">
-      <div class="row">
-
-      <% @products.each do |product| %>
-        <div class="col-sm-4 col-lg-4 col-md-4">
-          <div class="thumbnail">
-            <img src="http://placehold.it/320x150" alt="">
-            <div class="caption">
-              <h4><%= link_to product.name, product %></h4>
-              <p><%= product.description %></p>
-            </div>
-            <div class="ratings">
-              <p class="pull-right">15 reviews</p>
-              <p>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-              </p>
-            </div>
-          </div>
-        </div>
-      <% end %>
-
-        <div class="col-sm-4 col-lg-4 col-md-4">
-            <h4><a href="#">Like this template?</a>
-            </h4>
-            <p>If you like this template, then check out <a target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this tutorial</a> on how to build a working review system for your online store!</p>
-            <a class="btn btn-primary" target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">View Tutorial</a>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-<!-- /.container -->
-
-<div class="container">
-
-    <hr>
-
-    <!-- Footer -->
-    <footer>
-        <div class="row">
-            <div class="col-lg-12">
-                <p>Copyright &copy; Your Website 2014</p>
-            </div>
-        </div>
-    </footer>
-
-</div>
-<!-- /.container -->
-
-<!-- jQuery Version 1.11.0 -->
-<script src="js/jquery-1.11.0.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
-
-</body>
-
-</html>
