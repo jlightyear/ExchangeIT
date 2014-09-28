@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: exchangeit_production
-  username: nene
+  username: joseluis
   password: <%= ENV['EXCHANGEIT_DATABASE_PASSWORD'] %>
