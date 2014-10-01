@@ -81,6 +81,8 @@ GEM
       mime-types
     pg (0.17.1)
     polyglot (0.3.5)
+    pundit (0.3.0)
+      activesupport (>= 3.0.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -156,6 +158,7 @@ DEPENDENCIES
   kaminari
   paperclip (~> 3.0)
   pg
+  pundit
   rails (= 4.1.4)
   rails_12factor
   sass-rails (~> 4.0.3)
