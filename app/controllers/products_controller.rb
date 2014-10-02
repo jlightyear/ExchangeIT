@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    authorize @product
     if current_user.id != @product.user_id
       redirect_to products_path, alert: 'You can\'t update this product'
     end
@@ -62,6 +63,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
+    authorize @product
     @product.destroy
     respond_to do |format|
       format.html { redirect_to my_products_path, notice: 'Product was successfully destroyed.' }
