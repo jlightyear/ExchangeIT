@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def user_not_authorized(exception)
     policy_name = exception.policy.class.to_s.underscore
-    flash[:error] = "You cannot perform the action #{exception.query} according to the #{policy_name}."
+    flash[:alert] = "You cannot perform the action #{exception.query} according to the #{policy_name}."
     redirect_to(request.referrer || new_user_session_path)
   end
 
