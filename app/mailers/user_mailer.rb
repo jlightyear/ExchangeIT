@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "joseluis.estrach@gmail.com"
+  default from: ENV['FROM_MAIL']
 
   def email_to_user_product(product, current_user, message)
     @product_user = product.user
