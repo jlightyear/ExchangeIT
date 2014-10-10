@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style type="text/css" media="screen">
+      .cabecera{
+        width:100%;
+        position: fixed;
+        top: 0px;
+        background-color: #2d2d2d;
+        border-bottom: #888888 1px solid;
+      }
+
+      .cabecera h1{
+        font-size: 1.15em;
+        float: left;
+      }
+
+      .cabecera ul{
+        list-style-type: none;
+        float: right;
+        padding-left: 0em;
+      }
+
+      .cabecera ul li{
+        display: inline;
+        padding-left: 0.3em;
+        padding-right: 0.3em;
+      }
+
+      .cabecera a{
+        color: #70B3DA;
+        text-decoration: none;
+      }
+
+      .cabecera a:hover{
+        color: #cccccc;
+      }
+
+      .navegacion{
+        padding: 0em 3em 0em 3em;
+        color: #ee7769;
+      }
+
+      .fixed-title{
+        background-color: #ee7769;
+        width: 100%;
+        margin-top: 50px;
+        padding: 3em 0em 3em 0em;
+        color: #ffffff;
+      }
+
+      .center{
+        text-align: center;
+      }
+
+      .left{
+        text-align: left;
+      }
+
+      .right{
+        text-align: right;
+      }
+
+      .intro-info{
+        min-width:30%;
+        max-width:500px;
+        display: inline-block;
+        padding-left: 0.5em;
+      }
+
+      .intro-info h1{
+        font-size: 2em;
+        margin-bottom: 0px;
+      }
+
+      .intro-info h2{
+        font-size: 1.1em;
+        color: #000000;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="cabecera">
+      <nav class="navegacion">
+        <h1><a href="#">ExchangeIT</a></h1>
+        <ul>
+          <li><a href="#">Home</a></li> |
+          <li><a href="#">Contact</a></li> |
+          <li><a href="#">Sing Up</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="fixed-title center">
+      <div class="intro-info left">
+        <h2>Hello <%= @user.user %></h2>
+        <p>
+          You have a new product "<%= @product.name %>".<br />
+          <br />
+          If you want to take a look in, log in to the site,<br />
+          and visit "my products" in the menu.
+          <br /><br />
+          Thanks for visit us and have a great day!
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
