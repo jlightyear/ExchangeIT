@@ -6,12 +6,12 @@ class UserMailer < ActionMailer::Base
     @user = current_user
     @product = product
     @message = message
-    mail(to: @product_user.email, subject: 'Make a deal in ExcahngeIt')
+    mail(to: @product_user.email, subject: 'Make a deal in ExchangeIt')
   end
 
   def email_to_new_product(product, user)
     @user = user
     @product = product
-    mail(to: product.user.email, subject: 'You have a new product in ExcahngeIt')
+    mail(to: product.user.email, subject: 'You have a new product in ExchangeIt')
   end
 end
